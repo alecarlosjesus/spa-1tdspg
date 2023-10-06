@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import "./ExcluirProduto.scss";
 
 export default function ExcluirProduto() {
   document.title = "Excluir Produto";
@@ -37,10 +37,14 @@ export default function ExcluirProduto() {
   
   return (
     <>
-      <h1>Excluir - Produto</h1>
-      <div>
-        <h2>{`Deseja realmente excluir o produto ${produto.nome}?`}</h2>
-        <div>
+      <h1 className="titExcluir">Excluir - Produto</h1>
+      <h2>{`Deseja realmente excluir o produto?`}</h2>
+      <div className="card">
+        <div className="cardProduto">
+          <img src={produto.img} alt={produto.desc} />
+          <p><span className="subTxt">Nome:</span> {produto.nome}</p>
+          <p><span className="subTxt">Descrição:</span> {produto.desc}</p>
+          <p><span className="subTxt">Valor: R$ </span>{produto.preco}</p>
           <button onClick={handleExcluir}>EXCLUIR</button>
           <button onClick={()=> navigate("/produtos")}>CANCELAR</button>
         </div>
