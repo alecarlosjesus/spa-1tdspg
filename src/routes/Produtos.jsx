@@ -16,7 +16,7 @@ export default function Produtos() {
   // useEffect(() => {
   //   setNovaListaProdutos(ListaProdutos);
   //   console.log("useEffect que renderiza apenas uma vez!");
-  // }, []);
+  // }, []); 
 
   const [open, setOpen] = useState(false);
 
@@ -38,20 +38,7 @@ export default function Produtos() {
     }
   }, [open]);
 
-  const handleExcluir = (id) =>{
-
-    fetch(`http://localhost:5000/produtos/${id}`,{
-      method: "DELETE",
-      headers:{
-        "Content-Type":"application/json"
-      },
-    })
-    .then((response)=> console.log(response.status))
-    .catch(error=> console.log(error));
-
-    window.location("/produtos");
-
-  }
+  
 
   return (
     <>
@@ -95,7 +82,7 @@ export default function Produtos() {
                     <Editar />
                   </Link>{" "}
                   /{" "}
-                  <Link onClick={()=> handleExcluir(produto.id)}>
+                  <Link to={`/excluir/produto/${produto.id}`}>
                     <Excluir />
                   </Link>{" "}
                 </td>
